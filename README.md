@@ -1,4 +1,4 @@
-# DigitalOcean-AppPlatform-Cron
+# DigitalOcean-AppPlatform-Cron-Worker
 <!-- <div id="top"></div> -->
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
@@ -16,11 +16,11 @@
     <img src="./assets/DO_Logo-Blue.png" alt="Logo" >
   </a>
 
-<h3 align="center">DigitalOcean | App Platform Cron </h3>
+<h3 align="center">DigitalOcean | App Platform Cron Worker</h3>
 
   <p align="center">
     App Platform allows you to Build, deploy, and scale apps quickly using a simple, fully-managed infrastructure solution.
-    <br>This tutorial shows you how to <b>run scheduled jobs on App Platform using cron.</b>
+    <br>This tutorial shows you how to <b>run scheduled jobs on App Platform using a Cron Worker.</b>
     <br />
     <a href="https://docs.digitalocean.com/tutorials/app-platform/"><strong>Explore more App Platform tutorials»</strong></a>
     <br />
@@ -37,7 +37,7 @@
 
 ## Introduction
 
-In this tutorial, we'll guide you through the process of setting up a job scheduler in App Platform using a docker container that runs cron. We'll talk you through the steps required to build the docker container in case you want to modify it and deploy the scheduler as an App Platform Worker using the smallest/cheapest container size. Setting up your own scheduled jobs is as easy as modifying the included `crontab` file.
+In this tutorial, we'll guide you through the process of setting up a job scheduler in App Platform using a docker container that runs cron as an App Platform [Worker](https://docs.digitalocean.com/products/app-platform/how-to/manage-workers/). We'll talk you through the steps required to build the docker container in case you want to modify it and deploy the scheduler as an App Platform Worker using the smallest/cheapest container size. Defining your own scheduled jobs is as easy as modifying the included `crontab` file.
 
 
 ## Prerequisites
@@ -57,7 +57,7 @@ workers:
   github:
     branch: main
     deploy_on_push: true
-    repo: jkpedo/docker-cron
+    repo: DO-Solutions/docker-cron
   instance_count: 1
   instance_size_slug: professional-xs
   name: docker-cron
@@ -68,13 +68,15 @@ workers:
 
 # Hard / detailed version
 
-## Environmental setup
+## Git - Create a new repo for Docker cron worker
 
-# 1. Git - Create a new repo for Docker cron worker
-
-First create a new Git repo on Github or Gitlab that we can deploy our Docker cron worker from
+First create a new Git repo on Github or Gitlab that we can deploy our Docker Cron Worker from
 
 ## Create `Dockerfile`
+Here is an example Dockerfile that App Platform will use to build and run our Cron Worker
+
+* `ubuntu:22.04` base image is pulled
+* `cron` and `curl` is installed, you can modify this line to include any other tools you may need to run your scheduled jobs
 
 ```Dockerfile
 FROM ubuntu
@@ -99,39 +101,13 @@ ENTRYPOINT ["/entrypoint.sh"]
 # -L loglevel | Tell  cron  what to log about jobs (errors are logged regardless of this value) as the sum of the following values:
 CMD ["cron","-f", "-L", "2"]
 
-## Deploy a public-facing nginx service
-
-To deploy the service, follow these steps:
+## Create `crontab` to define your own cron jobs
 
 ```sh
-cd doks-example/
-
-# Setup the datacenter env to lon1 for London-based cluster
-export DC=lon1
-
-# Build an new image that including lon1 text in the header
-./script/docker-publish $DC
-
-# Create a DOKS cluster at London datacenter and deploy service
-./script/up $DC
-```
-Wait until a new window pops up. You should see a landing page similar to the following,
-![lon1](./assets/lon1.png)
-
-Repeat the same process to create a Sydney-based cluster by setting the environment variable DC to syd1:
-```sh
-# Setup the datacenter env to lon1 for London-based cluster
-export DC=syd1
-
-# Build an new image that including lon1 text in the header
-./script/docker-publish $DC
-
-# Create a DOKS cluster at London datacenter and deploy service
-./script/up $DC
+* * * * * curl http://sample-nodejs:8080 >/proc/1/fd/1 2>/proc/1/fd/2
+# An empty line is required at the end of this file for a valid cron file.
 
 ```
-Wait until a new window pops up. You should see a landing page similar to the following,
-![syd1](./assets/syd1.png)
 
 
 # 2. Cloudflare: Setup Global Load Balancer
