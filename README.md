@@ -182,7 +182,9 @@ workers:
 `doctl apps update b6af73dc-8aba-4237-8dc9-b632ad379bd5 --spec appspec.yaml`
 
 # Verify worker functionality
+We can use `doctl` to retrieve our runtime logs and verify our cron is running, by default it will output to console
 
+`doctl apps logs b6af73dc-8aba-4237-8dc9-b632ad379bd5 --type=run`
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
