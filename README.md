@@ -59,7 +59,7 @@ workers:
     deploy_on_push: true
     repo: DO-Solutions/docker-cron
   instance_count: 1
-  instance_size_slug: professional-xs
+  instance_size_slug: basic-xxs
   name: docker-cron
   source_dir: /
 ```
