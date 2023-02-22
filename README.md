@@ -48,7 +48,7 @@ In this tutorial, we'll guide you through the process of setting up a job schedu
 
 # Quick / Easy version
 
-1. Fork this [docker-cron](https://github.com/jkpedo/docker-cron) repo
+1. Fork this [docker-cron](https://github.com/DO-Solutions/docker-cron) repo
 2. Add the following to your App Spec (yaml):
 
 ```yaml
