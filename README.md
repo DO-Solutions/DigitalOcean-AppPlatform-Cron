@@ -113,9 +113,77 @@ CMD ["cron","-f", "-L", "2"]
 
 # Deploy to App Platform
 ## Modify your App Spec
-We're going to assume that you're adding docker-cron to an existing App Platform app
+We're going to assume that you're adding docker-cron to an existing App Platform app. Use `doctl` to retrieve your existing apps App Spec and add docker-cron.
+
+1. Retrieve App ID
+
+`doctl apps list`
+
+2. Use that ID to retrieve your apps App Spec
+
+`doctl apps spec get b6af73dc-8aba-4237-8dc9-b632ad379bd5 > appspec.yaml`
+
+```yaml
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+name: walrus-app
+region: nyc
+services:
+- environment_slug: node-js
+  git:
+    branch: main
+    repo_clone_url: https://github.com/digitalocean/sample-nodejs.git
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: sample-nodejs
+  routes:
+  - path: /
+  run_command: yarn start
+  source_dir: /
+  ```
+  
+3. Add the Docker-cron worker
+
+```yaml
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+name: walrus-app
+region: nyc
+services:
+- environment_slug: node-js
+  git:
+    branch: main
+    repo_clone_url: https://github.com/digitalocean/sample-nodejs.git
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: sample-nodejs
+  routes:
+  - path: /
+  run_command: yarn start
+  source_dir: /
+workers:
+- dockerfile_path: Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: DO-Solutions/docker-cron
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: docker-cron
+  source_dir: /
+  ```
+  
+4. Update your app to deploy Docker-cron Worker
+ 
+`doctl apps update b6af73dc-8aba-4237-8dc9-b632ad379bd5 --spec appspec.yaml`
 
 # Verify worker functionality
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
