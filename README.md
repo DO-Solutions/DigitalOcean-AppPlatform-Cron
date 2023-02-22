@@ -49,7 +49,7 @@ In this tutorial, we'll guide you through the process of setting up a job schedu
 # Quick / Easy version
 
 1. Fork this [docker-cron](https://github.com/DO-Solutions/docker-cron) repo
-2. Add the following to your App Spec (yaml):
+2. Add the following to your [App Spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) (yaml):
 
 ```yaml
 workers:
