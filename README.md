@@ -169,7 +169,7 @@ workers:
   github:
     branch: main
     deploy_on_push: true
-    repo: DO-Solutions/docker-cron
+    repo: <your-github-username>/docker-cron
   instance_count: 1
   instance_size_slug: basic-xxs
   name: docker-cron
