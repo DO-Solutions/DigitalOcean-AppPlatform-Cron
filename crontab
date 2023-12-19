@@ -1,5 +1,3 @@
-* * * * * cd / && php artisan schedule:run >> /public/storage/logs/scheduler.log 2>&1
-* * * * * cd / && php artisan queue:work --tries=3 >> /public/storage/logs/queue-worker.log 2>&1
-* * * * * echo "Worker started at $(date)" >> /publicstorage/logs/worker-start.log
+* * * * * echo "Hello from cronjob" >> /var/log/cron.log 2>&1
 
 # An empty line is required at the end of this file for a valid cron file.
