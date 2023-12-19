@@ -11,17 +11,17 @@ RUN apt-get update \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Set the working directory for the Laravel app
-WORKDIR /workspace
+WORKDIR /var/www
 
 # Copy the Laravel app into the container
-COPY . /workspace
+COPY /workspace /var/www
 
 # Install the Laravel app dependencies
 RUN composer install
 
 # Set proper permissions for the storage and bootstrap/cache directories
-RUN chown -R www-data:www-data /workspace/storage /workspace/bootstrap/cache \
-    && chmod -R 755 /workspace/storage /workspace/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 755 /var/www/storage /var/www/bootstrap/cache
 
 # Copy the crontab file and entrypoint script into the container
 COPY crontab /hello-cron
