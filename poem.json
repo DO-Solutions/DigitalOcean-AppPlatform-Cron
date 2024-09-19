@@ -1,0 +1,26 @@
+{
+    "poem": {
+      "title": "Ode to the DigitalOcean Sky",
+      "lines": [
+        "In the cloud where the droplets play,",
+        "DigitalOcean App Platform leads the way.",
+        "With code that flows in endless streams,",
+        "It powers our apps, fulfilling dreams.",
+        "",
+        "Cron jobs tick like the hands of time,",
+        "Scheduling tasks in perfect rhyme.",
+        "At midnight’s call or noon’s bright light,",
+        "They run our scripts through day and night.",
+        "",
+        "Deployments rise with a gentle breeze,",
+        "Scaling up with utmost ease.",
+        "From dev to prod with just one click,",
+        "The App Platform works swift and slick.",
+        "",
+        "So here's to the cloud that never sleeps,",
+        "To automated tasks and data heaps.",
+        "With DigitalOcean, we dare to dream,",
+        "A world of code in a seamless stream."
+      ]
+    }
+  }
