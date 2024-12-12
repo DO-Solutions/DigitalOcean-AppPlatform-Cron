@@ -24,7 +24,7 @@ For more information, please refer to the [How to Schedule Functions guide](http
 
 ## Introduction
 
-In this tutorial, we'll guide you through the process of setting up a job scheduler in App Platform using a docker container that runs cron as an App Platform [Worker](https://docs.digitalocean.com/products/app-platform/how-to/manage-workers/). We'll talk you through the steps required to build the docker container in case you want to modify it and deploy the scheduler as an App Platform Worker using the smallest/cheapest container size. Defining your own scheduled jobs is as easy as modifying the included `crontab` file.
+In this tutorial, we'll guide you through the process of setting up a job scheduler in App Platform using a docker container that runs cron as an App Platform [Worker](https://docs.digitalocean.com/products/app-platform/how-to/manage-workers/).
 
 ## Architecture diagram
 ![architecture](./assets/cron-architecture.png)
