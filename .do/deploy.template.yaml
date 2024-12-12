@@ -1,8 +1,9 @@
-name: docker-cron
-services:
-- dockerfile_path: Dockerfile
-  github:
-    branch: main
-    deploy_on_push: true
-    repo: DO-Solutions/docker-cron
+spec:
   name: docker-cron
+  services:
+    - dockerfile_path: Dockerfile
+      github:
+        branch: main
+        deploy_on_push: true
+        repo: DO-Solutions/docker-cron
+      name: docker-cron
