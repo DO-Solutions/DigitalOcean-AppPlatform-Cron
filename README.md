@@ -1,4 +1,4 @@
-**DigitalOcean Functions now natively supports scheduling functions.**
+**As an alternative DigitalOcean Functions natively supports scheduling functions.**
 
 For more information, please refer to the [How to Schedule Functions guide](https://docs.digitalocean.com/products/functions/how-to/schedule-functions). To schedule DigitalOcean Functions, you can create a function trigger and configure a schedule using standard cron syntax.
 
