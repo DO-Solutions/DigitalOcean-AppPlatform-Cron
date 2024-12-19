@@ -67,7 +67,7 @@ services:
     repo_clone_url: https://github.com/digitalocean/sample-nodejs.git
   http_port: 8080
   instance_count: 1
-  instance_size_slug: basic-xxs
+  instance_size_slug: apps-s-1vcpu-0.5gb
   name: sample-nodejs
   routes:
   - path: /
@@ -80,7 +80,7 @@ workers:
     deploy_on_push: true
     repo: <your-github-username>/DigitalOcean-AppPlatform-Cron
   instance_count: 1
-  instance_size_slug: basic-xxs
+  instance_size_slug: apps-s-1vcpu-0.5gb
   name: docker-cron
   source_dir: /
   ```
