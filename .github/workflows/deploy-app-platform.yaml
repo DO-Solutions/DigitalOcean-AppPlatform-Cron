@@ -3,7 +3,11 @@ name: Update App
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
 
 permissions:
   contents: read
@@ -23,3 +27,4 @@ jobs:
           project_id: ${{ secrets.DIGITALOCEAN_PROJECT_ID }}
           print_build_logs: true
           print_deploy_logs: true
+          deploy_pr_preview: true
