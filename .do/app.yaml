@@ -1,9 +1,8 @@
-spec:
-  name: DigitalOcean-AppPlatform-Cron
-  services:
-    - dockerfile_path: Dockerfile
-      github:
-        branch: main
-        deploy_on_push: true
-        repo: DO-Solutions/DigitalOcean-AppPlatform-Cron
-      name: DigitalOcean-AppPlatform-Cron
+name: DigitalOcean-AppPlatform-Cron
+services:
+  - dockerfile_path: Dockerfile
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: DO-Solutions/DigitalOcean-AppPlatform-Cron
+    name: DigitalOcean-AppPlatform-Cron
