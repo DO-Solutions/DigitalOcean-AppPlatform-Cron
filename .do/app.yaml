@@ -1,4 +1,14 @@
 name: cron
+services:
+- http_port: 80
+  image:
+    registry: library
+    registry_type: DOCKER_HUB
+    repository: nginx
+    tag: latest
+  instance_count: 1
+  instance_size_slug: apps-s-1vcpu-0.5gb
+  name: nginx
 workers:
 - dockerfile_path: Dockerfile
   github:
