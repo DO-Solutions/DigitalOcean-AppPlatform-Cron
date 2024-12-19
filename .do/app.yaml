@@ -1,8 +1,11 @@
 name: cron
-services:
-  - dockerfile_path: Dockerfile
-    github:
-      branch: main
-      deploy_on_push: true
-      repo: DO-Solutions/app-platform-cron
-    name: dockercron
+workers:
+- dockerfile_path: Dockerfile
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: DO-Solutions/app-platform-cron
+  instance_count: 1
+  instance_size_slug: apps-s-1vcpu-0.5gb
+  name: docker-cron
+  source_dir: /
