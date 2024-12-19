@@ -1,9 +1,22 @@
 spec:
-  name: docker-cron
+  name: cron
   services:
-    - dockerfile_path: Dockerfile
-      github:
-        branch: main
-        deploy_on_push: true
-        repo: DO-Solutions/docker-cron
-      name: docker-cron
+  - http_port: 80
+    image:
+      registry: library
+      registry_type: DOCKER_HUB
+      repository: nginx
+      tag: latest
+    instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    name: nginx
+  workers:
+  - dockerfile_path: Dockerfile
+    github:
+      branch: main
+      deploy_on_push: true
+      repo: DO-Solutions/app-platform-cron
+    instance_count: 1
+    instance_size_slug: apps-s-1vcpu-0.5gb
+    name: docker-cron
+    source_dir: /

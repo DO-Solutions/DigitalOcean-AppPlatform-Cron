@@ -20,3 +20,6 @@ jobs:
         #         SOME_SECRET_FROM_REPOSITORY: ${{ secrets.SOME_SECRET_FROM_REPOSITORY }}
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          project_id: ${{ secrets.DIGITALOCEAN_PROJECT_ID }}
+          print_build_logs: true
+          print_deploy_logs: true

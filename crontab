@@ -1,3 +1,3 @@
-* * * * * curl https://raw.githubusercontent.com/DO-Solutions/DigitalOcean-AppPlatform-Cron/refs/heads/app-action/poem.json >/proc/1/fd/1 2>/proc/1/fd/2
+* * * * * curl https://raw.githubusercontent.com/DO-Solutions/app-platform-cron/refs/heads/app-action/poem.json >/proc/1/fd/1 2>/proc/1/fd/2
 
 # An empty line is required at the end of this file for a valid cron file.
